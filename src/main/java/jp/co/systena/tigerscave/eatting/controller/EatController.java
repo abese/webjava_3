@@ -23,7 +23,6 @@ import jp.co.systena.tigerscave.eatting.model.Food;
 import jp.co.systena.tigerscave.eatting.model.GeneralCook;
 import jp.co.systena.tigerscave.eatting.model.GeneralCustomer;
 import jp.co.systena.tigerscave.eatting.model.HungryCustomer;
-import jp.co.systena.tigerscave.eatting.service.CustomerService;
 
 @Controller
 public class EatController {
@@ -33,8 +32,6 @@ public class EatController {
 
   // 表示用クラス
   EattingForm form;
-
-  private CustomerService customerService = new CustomerService();
 
   @RequestMapping("/Eatting")
   public Model show(Model model) {
