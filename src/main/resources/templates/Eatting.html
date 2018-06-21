@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Let's EATTING</title>
+</head>
+<body>
+<h1 align="center">Systena ランチ</h1>
+
+	<h3 align="center" style="color:#ff0000;">[[${eattingForm.errorMessage}]]</h1>
+	<form method="POST" th:action="@{/customer}" th:object="${eattingForm.inputCustomer}">
+
+		<h3 align="center">お客さん登録</h1>
+		<table border="2" width="250px" style="margin: auto;">
+			<tr>
+				<th width="40px">受付番号</th>
+				<th width="40px">名前</th>
+				<th width="40px">タイプ</th>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" th:field="*{no}" required/>
+				</td>
+				<td>
+					<input type="text" th:field="*{name}" required/>
+				</td>
+				<td>
+					<select th:field="*{type}"/>
+						<option value="high">腹ペコ</option>
+						<option value="row">普通</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<div align="center">
+			<input type="submit" value="登録！"/>
+		</div>
+	</form>
+	<form method="POST" action="/Eatting" th:object="${eattingForm}">
+		<br />
+
+		<table border="2" width="290px" style="margin: auto;">
+			<tr>
+				<th width="210px">お客さん</th>
+				<th width="40px">選択</th>
+				<th width="40px"></th>
+			</tr>
+			<th:block th:each="customer, customerList : ${eattingForm.customerList}">
+				<tr>
+					<td>[[${customer.name}]]</td>
+					<td>
+					<div th:unless="${customerList.index}">
+						<input type="radio" name="customer" th:value="${customerList.index}" checked/>
+					</div>
+					<div th:if="0!=${customerList.index}">
+						<input type="radio" name="accountCustomer" th:value="${customerList.index}" />
+					</div>
+					</td>
+					<td>
+						<input type="hidden" name="accountCustomer" th:value="${customer.no}"/>
+						<input type="submit" name="account" value="おあいそ！"/>
+					</td>
+				</tr>
+			</th:block>
+		</table>
+		<br/>
+		<table border="2" width="250px" style="margin: auto;">
+			<tr>
+				<th width="210px">職人さん</th>
+				<th width="40px">選択</th>
+			</tr>
+			<th:block th:each="cook, cookList : ${eattingForm.cookList}" >
+				<tr>
+					<td>[[${cook.name}]]</td>
+					<td>
+					<div th:unless="${cookList.index}">
+						<input type="radio" name="cook" th:value="${cookList.index}" checked/>
+					</div>
+					<div th:if="0!=${cookList.index}">
+						<input type="radio" name="cook" th:value="${cookList.index}" />
+					</div>
+					</td>
+				</tr>
+			</th:block>
+		</table>
+		<br/>
+		<table border="2" width="250px" style="margin: auto;">
+			<tr>
+				<th width="210px">食材</th>
+				<th width="40px">選択</th>
+			</tr>
+			<th:block th:each="food, foodList : ${eattingForm.foodList}">
+				<tr>
+					<td>[[${food.name}]]</td>
+					<td>
+					<div th:unless="${foodList.index}">
+						<input type="radio" name="food" th:value="${foodList.index}" checked/>
+					</div>
+					<div th:if="0!=${foodList.index}">
+						<input type="radio" name="food" th:value="${foodList.index}" />
+					</div>
+					</td>
+				</tr>
+			</th:block>
+		</table>
+
+		<br />
+		<div align="center" th:if="${eattingForm.isButDisplay}">
+			<input type="submit" name="order" value="ご注文！" />
+			<input type="hidden" name="eattingForm" th:value="${eattingForm}">
+		</div>
+		<br />
+		<div th:if="${eattingForm.message}">
+			<table border="2" width="400px" style="margin: auto;">
+			<tr>
+			<td>
+				[[${eattingForm.message}]]
+			</td>
+			</tr>
+			</table>
+		</div>
+	</form>
+
+</body>
+</html>
