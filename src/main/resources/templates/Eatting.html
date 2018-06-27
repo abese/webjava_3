@@ -1,17 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+<style type="text/css">
+<!--
+.table1{
+width:250px;
+}
+.table2{
+width:290px;
+}
+.table3{
+width:400px;
+}
+table, td, th { border: 2px #808080 solid; }
+-->
+</style>
 <meta charset="UTF-8">
 <title>Let's EATTING</title>
 </head>
 <body>
 <h1 align="center">Systena ランチ</h1>
 
-	<h3 align="center" style="color:#ff0000;">[[${eattingForm.errorMessage}]]</h1>
+	<h3 align="center" style="color:#ff0000;">[[${eattingForm.errorMessage}]]</h3>
 	<form method="POST" th:action="@{/customer}" th:object="${eattingForm.inputCustomer}">
 
-		<h3 align="center">お客さん登録</h1>
-		<table border="2" width="250px" style="margin: auto;">
+		<h3 align="center">お客さん登録</h3>
+		<table class="table1" style="margin: auto;">
 			<tr>
 				<th width="40px">受付番号</th>
 				<th width="40px">名前</th>
@@ -39,7 +53,7 @@
 	<form method="POST" action="/Eatting" th:object="${eattingForm}">
 		<br />
 
-		<table border="2" width="290px" style="margin: auto;">
+		<table class="table2" style="margin: auto;">
 			<tr>
 				<th width="210px">お客さん</th>
 				<th width="40px">選択</th>
@@ -53,7 +67,7 @@
 						<input type="radio" name="customer" th:value="${customerList.index}" checked/>
 					</div>
 					<div th:if="0!=${customerList.index}">
-						<input type="radio" name="accountCustomer" th:value="${customerList.index}" />
+						<input type="radio" name="customer" th:value="${customerList.index}" />
 					</div>
 					</td>
 					<td>
@@ -64,7 +78,7 @@
 			</th:block>
 		</table>
 		<br/>
-		<table border="2" width="250px" style="margin: auto;">
+		<table class="table1" style="margin: auto;">
 			<tr>
 				<th width="210px">職人さん</th>
 				<th width="40px">選択</th>
@@ -84,7 +98,7 @@
 			</th:block>
 		</table>
 		<br/>
-		<table border="2" width="250px" style="margin: auto;">
+		<table class="table1" style="margin: auto;">
 			<tr>
 				<th width="210px">食材</th>
 				<th width="40px">選択</th>
@@ -111,7 +125,7 @@
 		</div>
 		<br />
 		<div th:if="${eattingForm.message}">
-			<table border="2" width="400px" style="margin: auto;">
+			<table class="table3" style="margin: auto;">
 			<tr>
 			<td>
 				[[${eattingForm.message}]]

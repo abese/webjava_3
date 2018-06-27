@@ -8,7 +8,7 @@ public class HungryCustomer extends Customer {
   }
 
   @Override
-  public int getEattime(int amount) {
+  public int getEatTime(int amount) {
 
     return amount / pace;
   }

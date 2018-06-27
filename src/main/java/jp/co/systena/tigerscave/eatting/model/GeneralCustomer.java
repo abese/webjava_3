@@ -7,7 +7,7 @@ public class GeneralCustomer extends Customer {
   public GeneralCustomer() {
   }
   @Override
-  public int getEattime(int amount) {
+  public int getEatTime(int amount) {
 
     return amount / pace;
   }

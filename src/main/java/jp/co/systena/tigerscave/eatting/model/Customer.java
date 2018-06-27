@@ -38,5 +38,5 @@ public abstract class Customer {
   public String getName() {
     return name;
   }
-  public abstract int getEattime(int amount);
+  public abstract int getEatTime(int amount);
 }

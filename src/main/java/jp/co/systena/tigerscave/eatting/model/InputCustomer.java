@@ -4,7 +4,7 @@ public class InputCustomer extends Customer {
 
 
   @Override
-  public int getEattime(int amount) {
+  public int getEatTime(int amount) {
 
     return 0;
   }
